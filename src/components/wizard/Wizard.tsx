@@ -2,18 +2,15 @@ import { Plane } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '../ui/card';
 import PlaneInfoStep from './PlaneInfoStep';
 import { Button } from '../ui/button';
-import { useState } from 'react';
+import { useWizard } from '@/hooks/useWizardForm';
+import { FormProvider } from 'react-hook-form';
 
 export default function Wizard() {
-  const [step, setStep] = useState(0);
-
-  const handleNext = () => {
-    setStep((prevStep) => prevStep + 1);
-  };
+  const { form, step, submit } = useWizard();
 
   const getStepContent = () => {
     switch (step) {
-      case 0:
+      case 'planeInfo':
         return <PlaneInfoStep />;
       default:
         return null;
@@ -29,12 +26,14 @@ export default function Wizard() {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <form className="space-y-4" onSubmit={handleNext}>
-          {getStepContent()}
-          <Button type="submit" className="w-full">
-            Next
-          </Button>
-        </form>
+        <FormProvider {...form}>
+          <form className="space-y-4" onSubmit={submit}>
+            {getStepContent()}
+            <Button type="submit" className="w-full">
+              Next
+            </Button>
+          </form>
+        </FormProvider>
       </CardContent>
     </Card>
   );

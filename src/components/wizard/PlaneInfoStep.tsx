@@ -1,27 +1,24 @@
-import { Input } from '../ui/input';
-import { Label } from '../ui/label';
+import { useFormContext } from 'react-hook-form';
+import { WizardFormValues } from '@/hooks/useWizardForm';
+import FormInputGroup from './FormInputGroup';
 
 export default function PlaneInfoStep() {
+  const { control } = useFormContext<WizardFormValues>();
+
   return (
     <>
-      <div className="space-y-2">
-        <Label htmlFor="lift">Lift Force (N)</Label>
-        <Input
-          id="lift"
-          type="number"
-          placeholder="Enter lift force"
-          required
-        />
-      </div>
-      <div className="space-y-2">
-        <Label htmlFor="drag">Drag Force (N)</Label>
-        <Input
-          id="drag"
-          type="number"
-          placeholder="Enter drag force"
-          required
-        />
-      </div>
+      <FormInputGroup
+        control={control}
+        name="planeWeight"
+        label="Plane Weight (kg)"
+        placeholder="Enter plane weight"
+      />
+      <FormInputGroup
+        control={control}
+        name="wingArea"
+        label="Wing Area (m²)"
+        placeholder="Enter wing area"
+      />
     </>
   );
 }
