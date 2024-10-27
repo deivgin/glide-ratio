@@ -5,10 +5,10 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from './components/Card';
-import { Label } from './components/form/Label';
-import { Input } from './components/form/Input';
-import { Button } from './components/Button';
+} from './components/ui/card';
+import { Button } from './components/ui/button';
+import { Label } from './components/ui/label';
+import { Input } from './components/ui/input';
 
 export default function App() {
   return (
@@ -44,7 +44,7 @@ export default function App() {
               />
             </div>
             <Button type="submit" className="w-full">
-              'Next'
+              Next
             </Button>
           </form>
         </CardContent>
