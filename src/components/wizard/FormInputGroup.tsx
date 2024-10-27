@@ -16,7 +16,7 @@ export default function FormInputGroup<T extends FieldValues>(props: Props<T>) {
   const { label, placeholder } = props;
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-2 w-full">
       <Label htmlFor={field.name}>{label}</Label>
       <Input {...field} placeholder={placeholder} />
     </div>

@@ -4,6 +4,7 @@ import PlaneInfoStep from './PlaneInfoStep';
 import { Button } from '../ui/button';
 import { useWizard } from '@/hooks/useWizardForm';
 import { FormProvider } from 'react-hook-form';
+import MeasurementsStep from './MeasurementsStep';
 
 export default function Wizard() {
   const { form, step, submit } = useWizard();
@@ -12,6 +13,8 @@ export default function Wizard() {
     switch (step) {
       case 'planeInfo':
         return <PlaneInfoStep />;
+      case 'measurements':
+        return <MeasurementsStep />;
       default:
         return null;
     }
